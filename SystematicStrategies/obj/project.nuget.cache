@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "azjmApzBT75g79yFKIokcZYT+TFV4o2LpbOiP22yM3YmNaRCL0Wmc0TCpNaifLnYo3JDlouyevSI8nrwRlEFVw==",
+  "dgSpecHash": "u9wrQO1hcG+3EeqDqu2ju4sFnI9vFc3rBmWqQVKWPoWY90RGQiEBD13tNDJuVFxHOLLpmA/GU9J/V+pykaZ/vg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Erwan Izenic\\source\\repos\\SystematicStrategies\\SystematicStrategies\\SystematicStrategies.csproj",
+  "projectFilePath": "C:\\Users\\lamur\\Documents\\3aif\\Systematic-strategies-with-.NET\\SystematicStrategies\\SystematicStrategies.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Erwan Izenic\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512",
-    "C:\\Users\\Erwan Izenic\\.nuget\\packages\\fluentvalidation\\11.7.1\\fluentvalidation.11.7.1.nupkg.sha512",
-    "C:\\Users\\Erwan Izenic\\.nuget\\packages\\mathnet.numerics\\5.0.0\\mathnet.numerics.5.0.0.nupkg.sha512",
-    "C:\\Users\\Erwan Izenic\\.nuget\\packages\\pricinglibrary\\2.0.3.3\\pricinglibrary.2.0.3.3.nupkg.sha512"
+    "C:\\Users\\lamur\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512",
+    "C:\\Users\\lamur\\.nuget\\packages\\fluentvalidation\\11.7.1\\fluentvalidation.11.7.1.nupkg.sha512",
+    "C:\\Users\\lamur\\.nuget\\packages\\mathnet.numerics\\5.0.0\\mathnet.numerics.5.0.0.nupkg.sha512",
+    "C:\\Users\\lamur\\.nuget\\packages\\pricinglibrary\\2.0.3.3\\pricinglibrary.2.0.3.3.nupkg.sha512"
   ],
   "logs": []
 }

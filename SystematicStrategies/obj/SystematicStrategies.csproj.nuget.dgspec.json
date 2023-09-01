@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Erwan Izenic\\source\\repos\\SystematicStrategies\\SystematicStrategies\\SystematicStrategies.csproj": {}
+    "C:\\Users\\lamur\\Documents\\3aif\\Systematic-strategies-with-.NET\\SystematicStrategies\\SystematicStrategies.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Erwan Izenic\\source\\repos\\SystematicStrategies\\SystematicStrategies\\SystematicStrategies.csproj": {
+    "C:\\Users\\lamur\\Documents\\3aif\\Systematic-strategies-with-.NET\\SystematicStrategies\\SystematicStrategies.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Erwan Izenic\\source\\repos\\SystematicStrategies\\SystematicStrategies\\SystematicStrategies.csproj",
+        "projectUniqueName": "C:\\Users\\lamur\\Documents\\3aif\\Systematic-strategies-with-.NET\\SystematicStrategies\\SystematicStrategies.csproj",
         "projectName": "SystematicStrategies",
-        "projectPath": "C:\\Users\\Erwan Izenic\\source\\repos\\SystematicStrategies\\SystematicStrategies\\SystematicStrategies.csproj",
-        "packagesPath": "C:\\Users\\Erwan Izenic\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Erwan Izenic\\source\\repos\\SystematicStrategies\\SystematicStrategies\\obj\\",
+        "projectPath": "C:\\Users\\lamur\\Documents\\3aif\\Systematic-strategies-with-.NET\\SystematicStrategies\\SystematicStrategies.csproj",
+        "packagesPath": "C:\\Users\\lamur\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lamur\\Documents\\3aif\\Systematic-strategies-with-.NET\\SystematicStrategies\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Erwan Izenic\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\lamur\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Users\\Erwan Izenic\\Downloads": {},
+          "C:\\Users\\lamur\\Downloads": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
