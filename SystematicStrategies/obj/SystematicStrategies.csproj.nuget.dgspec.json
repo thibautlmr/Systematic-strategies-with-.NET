@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lamur\\Documents\\3aif\\Systematic-strategies-with-.NET\\SystematicStrategies\\SystematicStrategies.csproj": {}
+    "C:\\Users\\Erwan Izenic\\OneDrive\\Documents\\COURS_3A\\Systematic-strategies-with-.NET\\SystematicStrategies\\SystematicStrategies.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lamur\\Documents\\3aif\\Systematic-strategies-with-.NET\\SystematicStrategies\\SystematicStrategies.csproj": {
+    "C:\\Users\\Erwan Izenic\\OneDrive\\Documents\\COURS_3A\\Systematic-strategies-with-.NET\\SystematicStrategies\\SystematicStrategies.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lamur\\Documents\\3aif\\Systematic-strategies-with-.NET\\SystematicStrategies\\SystematicStrategies.csproj",
+        "projectUniqueName": "C:\\Users\\Erwan Izenic\\OneDrive\\Documents\\COURS_3A\\Systematic-strategies-with-.NET\\SystematicStrategies\\SystematicStrategies.csproj",
         "projectName": "SystematicStrategies",
-        "projectPath": "C:\\Users\\lamur\\Documents\\3aif\\Systematic-strategies-with-.NET\\SystematicStrategies\\SystematicStrategies.csproj",
-        "packagesPath": "C:\\Users\\lamur\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lamur\\Documents\\3aif\\Systematic-strategies-with-.NET\\SystematicStrategies\\obj\\",
+        "projectPath": "C:\\Users\\Erwan Izenic\\OneDrive\\Documents\\COURS_3A\\Systematic-strategies-with-.NET\\SystematicStrategies\\SystematicStrategies.csproj",
+        "packagesPath": "C:\\Users\\Erwan Izenic\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Erwan Izenic\\OneDrive\\Documents\\COURS_3A\\Systematic-strategies-with-.NET\\SystematicStrategies\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\lamur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Erwan Izenic\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,8 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Users\\lamur\\Documents\\3aif": {},
-          "C:\\Users\\lamur\\Downloads": {},
+          "C:\\Users\\Erwan Izenic\\Downloads": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -42,6 +41,14 @@
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
           "dependencies": {
+            "CsvHelper": {
+              "target": "Package",
+              "version": "[30.0.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
             "PricingLibrary": {
               "target": "Package",
               "version": "[2.0.4.2, )"

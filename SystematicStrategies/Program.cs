@@ -3,11 +3,27 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using CsvHelper.Configuration;
+using CsvHelper;
+using MathNet.Numerics.Distributions;
 using ScottPlot;
+using PricingLibrary.MarketDataFeed;
+using Newtonsoft.Json;
+using PricingLibrary.DataClasses;
+using PricingLibrary.RebalancingOracleDescriptions;
+using Newtonsoft.Json.Linq;
+using ScottPlot.Drawing.Colormaps;
+using ScottPlot.Plottable;
+using System.Net;
+using System.Numerics;
+using System.Text.Json;
+
 
 namespace SystematicStrategies
 {
@@ -15,14 +31,60 @@ namespace SystematicStrategies
     {
         static void Main()
         {
-            var marketData = PricingLibrary.Utilities.SampleMarketData.Sample().ToList();
-            var testParameters = PricingLibrary.Utilities.SampleTestParameters.Sample();
+            string csvPath = "C:\\Users\\Erwan Izenic\\OneDrive\\Documents\\COURS_3A\\Systematic-strategies-with-.NET\\SystematicStrategies\\Resources\\TestData\\Test_1_2\\data_1_2.csv";
+            var marketData = new List<ShareValue>();
+            using (var reader = new StreamReader(csvPath))
+            using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)))
+            {
+                var records = csv.GetRecords<ShareValue>();
+
+                foreach (var record in records)
+                {
+                    var shareValue = new ShareValue
+                    {
+                        DateOfPrice = record.DateOfPrice,
+                        Id = record.Id,
+                        Value = record.Value
+                    };
+                    marketData.Add(shareValue);
+                }
+            }
+            string jsonPath = "C:\\Users\\Erwan Izenic\\OneDrive\\Documents\\COURS_3A\\Systematic-strategies-with-.NET\\SystematicStrategies\\Resources\\TestData\\Test_1_2\\params_1_2.json";
+            BasketTestParameters testParameters = null;
+            using (StreamReader r = new StreamReader(jsonPath))
+            {
+                string json = r.ReadToEnd();
+
+                var model = System.Text.Json.JsonSerializer.Deserialize<BasketTestParametersModel>(json);
+
+                testParameters = new BasketTestParameters
+                {
+                    PricingParams = new BasketPricingParameters
+                    {
+                        Volatilities = model.pricingParams.volatilities,
+                        Correlations = model.pricingParams.correlations
+                    },
+                    BasketOption = new Basket
+                    {
+                        Strike = model.basketOption.strike,
+                        Maturity = model.basketOption.maturity,
+                        UnderlyingShareIds = model.basketOption.underlyingShareIds,
+                        Weights = model.basketOption.weights
+                    },
+                    RebalancingOracleDescription = new PricingLibrary.RebalancingOracleDescriptions.RegularOracleDescription
+                    {
+                        Period = model.rebalancingOracleDescription.period
+                    }
+                };
+            }
+
+
+            //var testParameters = PricingLibrary.Utilities.SampleTestParameters.Sample();
             PricingLibrary.Computations.Pricer pricer = new PricingLibrary.Computations.Pricer(testParameters);
             var p = pricer.Price(PricingLibrary.TimeHandler.MathDateConverter.ConvertToMathDistance(marketData[0].DateOfPrice, marketData.Last().DateOfPrice), new double[]{ marketData[0].Value }).Price;
             List<double> portfolioValues = new List<double>() { p};
             ProgramUtilities programUtilities = new ProgramUtilities();
             List<DateTime> dateTimes = programUtilities.GetDateTimes(marketData);
-
             var marketDataCurrDate = programUtilities.GetShareValuesForOneDate(marketData, dateTimes[0]);
             Portfolio portfolio = new Portfolio(marketDataCurrDate, p, testParameters.BasketOption.Maturity);
             portfolio.UpdateCompo(pricer, marketDataCurrDate);
@@ -45,7 +107,7 @@ namespace SystematicStrategies
             var plt = new ScottPlot.Plot(1200, 1200);
             plt.AddScatter(dates, portfolioValues.ToArray(), label:"Hedging", color:Color.Blue);
             plt.AddScatter(dates, optionPrices.ToArray(), label:"Theorical prices of the option", color:Color.Red);
-            plt.SaveFig("C:\\Users\\lamur\\Documents\\3aif\\Systematic-strategies-with-.NET\\SystematicStrategies\\plot.png");
+            plt.SaveFig("C:\\Users\\Erwan Izenic\\OneDrive\\Documents\\COURS_3A\\Systematic-strategies-with-.NET\\SystematicStrategies\\plot.png");
 
         }
     }
