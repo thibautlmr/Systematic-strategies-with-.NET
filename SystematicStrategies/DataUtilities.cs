@@ -7,11 +7,17 @@ using System.Threading.Tasks;
 
 namespace SystematicStrategies
 {
-    internal class ProgramUtilities
+    internal class DataUtilities
     {
-        public ProgramUtilities() 
-        {
-
+        public List<PricingLibrary.MarketDataFeed.ShareValue> marketData;
+        public PricingLibrary.DataClasses.BasketTestParameters testParameters;
+        public DateTime maturity;
+        public DataUtilities()
+        { 
+            // à modifier
+            this.marketData = PricingLibrary.Utilities.SampleMarketData.Sample().ToList();
+            this.testParameters = PricingLibrary.Utilities.SampleTestParameters.Sample();
+            this.maturity = testParameters.BasketOption.Maturity;
         }
 
         public List<DateTime> GetDateTimes(List<PricingLibrary.MarketDataFeed.ShareValue> shares)
@@ -27,24 +33,11 @@ namespace SystematicStrategies
             return dateTimes;
         }
 
-        public List<DateTime> Get(List<PricingLibrary.MarketDataFeed.ShareValue> shares)
+        public List<PricingLibrary.MarketDataFeed.ShareValue> GetShareValuesForOneDate(DateTime dateTime) 
         {
-            List<DateTime> dateTimes = new List<DateTime>();
-            foreach (ShareValue share in shares)
-            {
-                if (!dateTimes.Contains(share.DateOfPrice))
-                {
-                    dateTimes.Add(share.DateOfPrice);
-                }
-            }
-            return dateTimes;
-        }
-
-        public List<PricingLibrary.MarketDataFeed.ShareValue> GetShareValuesForOneDate(List<PricingLibrary.MarketDataFeed.ShareValue> shares, DateTime dateTime) 
-        {
-            List<DateTime> dateTimes = GetDateTimes(shares);
+            List<DateTime> dateTimes = GetDateTimes(marketData);
             List<ShareValue> sharesOneDate = new List<PricingLibrary.MarketDataFeed.ShareValue>();
-            foreach (ShareValue share in shares)
+            foreach (ShareValue share in marketData)
             {
                 if (share.DateOfPrice == dateTime)
                 {

@@ -14,40 +14,30 @@ namespace SystematicStrategies
     class Program
     {
         static void Main()
-        {
-            var marketData = PricingLibrary.Utilities.SampleMarketData.Sample().ToList();
-            var testParameters = PricingLibrary.Utilities.SampleTestParameters.Sample();
-            PricingLibrary.Computations.Pricer pricer = new PricingLibrary.Computations.Pricer(testParameters);
-            var p = pricer.Price(PricingLibrary.TimeHandler.MathDateConverter.ConvertToMathDistance(marketData[0].DateOfPrice, marketData.Last().DateOfPrice), new double[]{ marketData[0].Value }).Price;
-            List<double> portfolioValues = new List<double>() { p};
-            ProgramUtilities programUtilities = new ProgramUtilities();
-            List<DateTime> dateTimes = programUtilities.GetDateTimes(marketData);
+        { 
+            DataUtilities dataUtilities = new DataUtilities();
+            PricingLibrary.Computations.Pricer pricer = new PricingLibrary.Computations.Pricer(dataUtilities.testParameters);
+            ComputationUtilities computationUtilities = new ComputationUtilities(pricer, dataUtilities);
+            List<DateTime> dateTimes = dataUtilities.GetDateTimes(dataUtilities.marketData);
 
-            var marketDataCurrDate = programUtilities.GetShareValuesForOneDate(marketData, dateTimes[0]);
-            Portfolio portfolio = new Portfolio(marketDataCurrDate, p, testParameters.BasketOption.Maturity);
-            portfolio.UpdateCompo(pricer, marketDataCurrDate);
-            List<double> optionPrices = new List<double>();
-            optionPrices.Add(p);
+            List<PricingLibrary.MarketDataFeed.ShareValue> marketDataCurrDate = dataUtilities.GetShareValuesForOneDate(dateTimes[0]);
+            Portfolio portfolio = new Portfolio(marketDataCurrDate, computationUtilities.GetPrice(dateTimes[0], dataUtilities.maturity));
+            PortfolioUtilities portfolioUtilities = new PortfolioUtilities(portfolio, computationUtilities);
+            List<PricingLibrary.DataClasses.OutputData> outputDatas = new List<PricingLibrary.DataClasses.OutputData>();
+
+            portfolioUtilities.UpdateCompo(marketDataCurrDate);
 
             for (int t = 1; t < dateTimes.Count; t++)
             {
-                var marketDataPrevDate = programUtilities.GetShareValuesForOneDate(marketData, dateTimes[t-1]);
-                marketDataCurrDate = programUtilities.GetShareValuesForOneDate(marketData, dateTimes[t]);
-                var vt = portfolio.UpdatePortfolioValue(marketDataPrevDate, marketDataCurrDate);
-                optionPrices.Add(pricer.Price(PricingLibrary.TimeHandler.MathDateConverter.ConvertToMathDistance(marketDataCurrDate[0].DateOfPrice, portfolio.maturity), new double[] { marketDataCurrDate[0].Value }).Price);
-                portfolioValues.Add(vt);
-                if (portfolio.RebalancingTime(t))
+                var marketDataPrevDate = dataUtilities.GetShareValuesForOneDate(dateTimes[t - 1]);
+                marketDataCurrDate = dataUtilities.GetShareValuesForOneDate(dateTimes[t]);
+                var vt = portfolioUtilities.UpdatePortfolioValue(marketDataPrevDate, marketDataCurrDate);
+                if (portfolioUtilities.RebalancingTime(t))
                 {
-                    portfolio.UpdateCompo(pricer, marketDataCurrDate);
+                    portfolioUtilities.UpdateCompo(marketDataCurrDate);
                 }
             }
-            var dates = Enumerable.Range(0, dateTimes.Count()).Select(x => (double)x).ToArray(); 
-            var plt = new ScottPlot.Plot(1200, 1200);
-            plt.AddScatter(dates, portfolioValues.ToArray(), label:"Hedging", color:Color.Blue);
-            plt.AddScatter(dates, optionPrices.ToArray(), label:"Theorical prices of the option", color:Color.Red);
-            plt.SaveFig("C:\\Users\\lamur\\Documents\\3aif\\Systematic-strategies-with-.NET\\SystematicStrategies\\plot.png");
-
+            //return outputDatas;
         }
     }
-
 }

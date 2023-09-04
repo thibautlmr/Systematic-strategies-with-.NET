@@ -1,4 +1,4 @@
-﻿using PricingLibrary.Computations;
+﻿using PricingLibrary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +9,12 @@ using System.Xml.Serialization;
 namespace SystematicStrategies {
     internal class Portfolio
     {
-        Dictionary<String, double> portfolioMap;
-        double freeRateQuantity;
-        double prevPortfolioValue;
-        public DateTime maturity;
-        public Portfolio(List<PricingLibrary.MarketDataFeed.ShareValue> shares, double p, DateTime maturity)
+        public Dictionary<String, double> portfolioMap;
+        public double prevPortfolioValue; 
+        public Portfolio(List<PricingLibrary.MarketDataFeed.ShareValue> shares, double p)
         {
             Dictionary<String, double> portfolioMap = new Dictionary<String, double>();
+            portfolioMap.Add("freeRate", 0);
             if (shares != null)
             {
                 foreach (PricingLibrary.MarketDataFeed.ShareValue share in shares)
@@ -24,33 +23,7 @@ namespace SystematicStrategies {
                 }
             }
             this.portfolioMap = portfolioMap;
-            freeRateQuantity = 1;
-            prevPortfolioValue = p;
-            this.maturity = maturity;
-        }
-
-        public double UpdatePortfolioValue(List<PricingLibrary.MarketDataFeed.ShareValue> marketDataPrevDate, List<PricingLibrary.MarketDataFeed.ShareValue> marketDataCurrDate)
-
-        { 
-            double[] spots = new double[] { marketDataPrevDate[0].Value };
-            // a modifier car un seul actif
-            double currPrice = marketDataCurrDate[0].Value;
-            double prevPrice = marketDataPrevDate[0].Value;
-            prevPortfolioValue = portfolioMap[portfolioMap.Keys.ToList()[0]] * currPrice + PricingLibrary.MarketDataFeed.RiskFreeRateProvider.GetRiskFreeRateAccruedValue(marketDataPrevDate[0].DateOfPrice, marketDataCurrDate[0].DateOfPrice) * freeRateQuantity;
-            return prevPortfolioValue;
-        }
-
-        public bool RebalancingTime(int t)
-        {
-            return true;
-        }
-
-        public void UpdateCompo(PricingLibrary.Computations.Pricer pricer, List<PricingLibrary.MarketDataFeed.ShareValue> marketDataCurrDate)
-        {
-            double[] spots = new double[] { marketDataCurrDate[0].Value };
-            portfolioMap[portfolioMap.Keys.ToList()[0]] = pricer.Price(PricingLibrary.TimeHandler.MathDateConverter.ConvertToMathDistance(marketDataCurrDate[0].DateOfPrice, maturity), spots).Deltas[0];
-            double currPrice = marketDataCurrDate[0].Value;
-            freeRateQuantity = prevPortfolioValue - portfolioMap[portfolioMap.Keys.ToList()[0]] * currPrice;
+            this.prevPortfolioValue = p;
         }
     }
 }
