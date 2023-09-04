@@ -29,12 +29,23 @@ namespace SystematicStrategies
 {
     class Program
     {
-        static void Main()
+        static void Main(string[] args)
         {
-            string csvPath = "C:\\Users\\Erwan Izenic\\OneDrive\\Documents\\COURS_3A\\Systematic-strategies-with-.NET\\SystematicStrategies\\Resources\\TestData\\Test_1_2\\data_1_2.csv";
+
+            if (args.Length != 3)
+            {
+                Console.WriteLine("Utilisation : BacktestConsole.exe <test-params> <mkt-data> <output-file>");
+                return;
+            }
+
+            string jsonPath = args[0];
+            string csvPath = args[1];
+            string outputJsonPath = args[2];
+
+            //string csvPath = "C:\\Users\\Erwan Izenic\\OneDrive\\Documents\\COURS_3A\\Systematic-strategies-with-.NET\\SystematicStrategies\\Resources\\TestData\\Test_1_2\\data_1_2.csv";
             List<ShareValue> marketData = CsvDataReader.GetData(csvPath);
 
-            string jsonPath = "C:\\Users\\Erwan Izenic\\OneDrive\\Documents\\COURS_3A\\Systematic-strategies-with-.NET\\SystematicStrategies\\Resources\\TestData\\Test_1_2\\params_1_2.json";
+            //string jsonPath = "C:\\Users\\Erwan Izenic\\OneDrive\\Documents\\COURS_3A\\Systematic-strategies-with-.NET\\SystematicStrategies\\Resources\\TestData\\Test_1_2\\params_1_2.json";
             BasketTestParameters testParameters = JsonParamsReader.GetParam(jsonPath);
 
             
@@ -61,6 +72,11 @@ namespace SystematicStrategies
                     portfolio.UpdateCompo(pricer, marketDataCurrDate);
                 }
             }
+
+            //string outputJson = System.Text.Json.JsonSerializer.Serialize();
+            //File.WriteAllText(outputJsonPath, outputJson);
+
+
             var dates = Enumerable.Range(0, dateTimes.Count()).Select(x => (double)x).ToArray(); 
             var plt = new ScottPlot.Plot(1200, 1200);
             plt.AddScatter(dates, portfolioValues.ToArray(), label:"Hedging", color:Color.Blue);
