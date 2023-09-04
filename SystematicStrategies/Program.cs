@@ -33,7 +33,7 @@ namespace SystematicStrategies
             {
                 var marketDataPrevDate = programUtilities.GetShareValuesForOneDate(marketData, dateTimes[t-1]);
                 marketDataCurrDate = programUtilities.GetShareValuesForOneDate(marketData, dateTimes[t]);
-                var vt = portfolio.UpdatePortfolioValue(p, marketDataPrevDate, marketDataCurrDate);
+                var vt = portfolio.UpdatePortfolioValue(marketDataPrevDate, marketDataCurrDate);
                 optionPrices.Add(pricer.Price(PricingLibrary.TimeHandler.MathDateConverter.ConvertToMathDistance(marketDataCurrDate[0].DateOfPrice, portfolio.maturity), new double[] { marketDataCurrDate[0].Value }).Price);
                 portfolioValues.Add(vt);
                 if (portfolio.RebalancingTime(t))

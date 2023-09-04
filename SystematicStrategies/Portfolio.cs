@@ -29,14 +29,15 @@ namespace SystematicStrategies {
             this.maturity = maturity;
         }
 
-        public double UpdatePortfolioValue(double prevPortfolioValue, List<PricingLibrary.MarketDataFeed.ShareValue> marketDataPrevDate, List<PricingLibrary.MarketDataFeed.ShareValue> marketDataCurrDate)
+        public double UpdatePortfolioValue(List<PricingLibrary.MarketDataFeed.ShareValue> marketDataPrevDate, List<PricingLibrary.MarketDataFeed.ShareValue> marketDataCurrDate)
 
         { 
             double[] spots = new double[] { marketDataPrevDate[0].Value };
             // a modifier car un seul actif
             double currPrice = marketDataCurrDate[0].Value;
             double prevPrice = marketDataPrevDate[0].Value;
-            return portfolioMap[portfolioMap.Keys.ToList()[0]] * currPrice + PricingLibrary.MarketDataFeed.RiskFreeRateProvider.GetRiskFreeRateAccruedValue(marketDataPrevDate[0].DateOfPrice, marketDataCurrDate[0].DateOfPrice) * freeRateQuantity;
+            prevPortfolioValue = portfolioMap[portfolioMap.Keys.ToList()[0]] * currPrice + PricingLibrary.MarketDataFeed.RiskFreeRateProvider.GetRiskFreeRateAccruedValue(marketDataPrevDate[0].DateOfPrice, marketDataCurrDate[0].DateOfPrice) * freeRateQuantity;
+            return prevPortfolioValue;
         }
 
         public bool RebalancingTime(int t)
@@ -48,8 +49,8 @@ namespace SystematicStrategies {
         {
             double[] spots = new double[] { marketDataCurrDate[0].Value };
             portfolioMap[portfolioMap.Keys.ToList()[0]] = pricer.Price(PricingLibrary.TimeHandler.MathDateConverter.ConvertToMathDistance(marketDataCurrDate[0].DateOfPrice, maturity), spots).Deltas[0];
-            double prevPrice = marketDataCurrDate[0].Value;
-            freeRateQuantity = prevPortfolioValue - portfolioMap[portfolioMap.Keys.ToList()[0]] * prevPrice;
+            double currPrice = marketDataCurrDate[0].Value;
+            freeRateQuantity = prevPortfolioValue - portfolioMap[portfolioMap.Keys.ToList()[0]] * currPrice;
         }
     }
 }
