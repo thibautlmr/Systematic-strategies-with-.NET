@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v7.0": {
       "SystematicStrategies/1.0.0": {
         "dependencies": {
-          "PricingLibrary": "2.0.3.3"
+          "PricingLibrary": "2.0.4.2",
+          "ScottPlot": "4.1.67"
         },
         "runtime": {
           "SystematicStrategies.dll": {}
@@ -22,14 +23,6 @@
           }
         }
       },
-      "FluentValidation/11.7.1": {
-        "runtime": {
-          "lib/net7.0/FluentValidation.dll": {
-            "assemblyVersion": "11.0.0.0",
-            "fileVersion": "11.7.1.0"
-          }
-        }
-      },
       "MathNet.Numerics/5.0.0": {
         "runtime": {
           "lib/net6.0/MathNet.Numerics.dll": {
@@ -38,41 +31,77 @@
           }
         }
       },
-      "PricingLibrary/2.0.3.3": {
+      "Microsoft.NETCore.Platforms/3.1.4": {},
+      "Microsoft.Win32.SystemEvents/4.7.0": {
         "dependencies": {
-          "CsvHelper": "30.0.1",
-          "FluentValidation": "11.7.1",
-          "MathNet.Numerics": "5.0.0"
+          "Microsoft.NETCore.Platforms": "3.1.4"
         },
         "runtime": {
-          "lib/net7.0-windows7.0/PricingLibrary.dll": {
-            "assemblyVersion": "2.0.3.3",
-            "fileVersion": "2.0.3.3"
+          "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll": {
+            "assemblyVersion": "4.0.2.0",
+            "fileVersion": "4.700.19.56404"
           }
         },
         "runtimeTargets": {
-          "runtimes/win10-x64/native/BasicComputations.lib": {
-            "rid": "win10-x64",
-            "assetType": "native",
-            "fileVersion": "0.0.0.0"
-          },
-          "runtimes/win10-x64/native/NativeLibrary.lib": {
-            "rid": "win10-x64",
-            "assetType": "native",
-            "fileVersion": "0.0.0.0"
-          },
-          "runtimes/win10-x64/native/Wrapper.lib": {
-            "rid": "win10-x64",
-            "assetType": "native",
-            "fileVersion": "0.0.0.0"
-          },
-          "runtimes/win10-x64/native/libpnl.lib": {
-            "rid": "win10-x64",
-            "assetType": "native",
-            "fileVersion": "0.0.0.0"
+          "runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.2.0",
+            "fileVersion": "4.700.19.56404"
           }
         }
-      }
+      },
+      "PricingLibrary/2.0.4.2": {
+        "dependencies": {
+          "CsvHelper": "30.0.1",
+          "MathNet.Numerics": "5.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/PricingLibrary.dll": {
+            "assemblyVersion": "2.0.4.2",
+            "fileVersion": "2.0.4.2"
+          }
+        }
+      },
+      "ScottPlot/4.1.67": {
+        "dependencies": {
+          "System.Drawing.Common": "4.7.2",
+          "System.Numerics.Vectors": "4.5.0"
+        },
+        "runtime": {
+          "lib/net6.0/ScottPlot.dll": {
+            "assemblyVersion": "4.1.67.0",
+            "fileVersion": "4.1.67.0"
+          }
+        }
+      },
+      "System.Drawing.Common/4.7.2": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "3.1.4",
+          "Microsoft.Win32.SystemEvents": "4.7.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Drawing.Common.dll": {
+            "assemblyVersion": "4.0.0.2",
+            "fileVersion": "4.6.29719.1"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "rid": "unix",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.2.2",
+            "fileVersion": "4.700.21.6905"
+          },
+          "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.2.2",
+            "fileVersion": "4.700.21.6905"
+          }
+        }
+      },
+      "System.Numerics.Vectors/4.5.0": {}
     }
   },
   "libraries": {
@@ -88,13 +117,6 @@
       "path": "csvhelper/30.0.1",
       "hashPath": "csvhelper.30.0.1.nupkg.sha512"
     },
-    "FluentValidation/11.7.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-w9Al4gls6iVGFbTd/NPOPlwzqDTghH+ntL4c4FYUatc+LeybpIwhYArLykZJP/VjF2n3ihj3ws+1yd7KR5lQlg==",
-      "path": "fluentvalidation/11.7.1",
-      "hashPath": "fluentvalidation.11.7.1.nupkg.sha512"
-    },
     "MathNet.Numerics/5.0.0": {
       "type": "package",
       "serviceable": true,
@@ -102,12 +124,47 @@
       "path": "mathnet.numerics/5.0.0",
       "hashPath": "mathnet.numerics.5.0.0.nupkg.sha512"
     },
-    "PricingLibrary/2.0.3.3": {
+    "Microsoft.NETCore.Platforms/3.1.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-y/1A/wHP/hrCnbIwa1svECpcDM6+/tIovFbREBy+FDmRJcs4loBsvpuGRaUFg5Srk2QfTjQUbf9Ob+DBHckLdA==",
-      "path": "pricinglibrary/2.0.3.3",
-      "hashPath": "pricinglibrary.2.0.3.3.nupkg.sha512"
+      "sha512": "sha512-9/y05/CuxE+j184Nr4KihhB9KcUkvGojmD4JV4Vt/mHhVZR+eOCD5WCM+CXye9K0OFMsaPXbN+IcaIpjgBGZmg==",
+      "path": "microsoft.netcore.platforms/3.1.4",
+      "hashPath": "microsoft.netcore.platforms.3.1.4.nupkg.sha512"
+    },
+    "Microsoft.Win32.SystemEvents/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mtVirZr++rq+XCDITMUdnETD59XoeMxSpLRIII7JRI6Yj0LEDiO1pPn0ktlnIj12Ix8bfvQqQDMMIF9wC98oCA==",
+      "path": "microsoft.win32.systemevents/4.7.0",
+      "hashPath": "microsoft.win32.systemevents.4.7.0.nupkg.sha512"
+    },
+    "PricingLibrary/2.0.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-feimpw0fkyYMYPBj7DobNXdwLXRbR3x7lz12RYdZk4NCvb9N4m5TZpLHN+AAb/o4BFO85XX2g5gqxMLWRtQE/w==",
+      "path": "pricinglibrary/2.0.4.2",
+      "hashPath": "pricinglibrary.2.0.4.2.nupkg.sha512"
+    },
+    "ScottPlot/4.1.67": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Gdfr4NlbAPJ612JJ0FaF6uKJuO7aThtdgXo8wQ7BmSi65x10RxEux57CiijeMWAEwjx9p9tlFlqE/mjVBc+Luw==",
+      "path": "scottplot/4.1.67",
+      "hashPath": "scottplot.4.1.67.nupkg.sha512"
+    },
+    "System.Drawing.Common/4.7.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-I2y4KBK3VCvU/WqE2xv7NjQ67maXHttkFSHYKgU2evrG9Yqh0oFjfORXt5hZTk+BVjdyFo2h0/YQZsca33BGmg==",
+      "path": "system.drawing.common/4.7.2",
+      "hashPath": "system.drawing.common.4.7.2.nupkg.sha512"
+    },
+    "System.Numerics.Vectors/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QQTlPTl06J/iiDbJCiepZ4H//BVraReU4O4EoRw1U02H5TLUIT7xn3GnDp9AXPSlJUDyFs4uWjWafNX6WrAojQ==",
+      "path": "system.numerics.vectors/4.5.0",
+      "hashPath": "system.numerics.vectors.4.5.0.nupkg.sha512"
     }
   }
 }

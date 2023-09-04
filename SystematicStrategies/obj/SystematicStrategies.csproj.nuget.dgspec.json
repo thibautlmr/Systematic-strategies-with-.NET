@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\lamur\\Documents\\3aif": {},
           "C:\\Users\\lamur\\Downloads": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -43,7 +44,11 @@
           "dependencies": {
             "PricingLibrary": {
               "target": "Package",
-              "version": "[2.0.3.3, )"
+              "version": "[2.0.4.2, )"
+            },
+            "ScottPlot": {
+              "target": "Package",
+              "version": "[4.1.67, )"
             }
           },
           "imports": [

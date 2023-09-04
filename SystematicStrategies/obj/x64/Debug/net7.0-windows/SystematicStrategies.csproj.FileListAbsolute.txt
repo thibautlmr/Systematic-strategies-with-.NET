@@ -30,13 +30,8 @@ C:\Users\lamur\Documents\3aif\Systematic-strategies-with-.NET\SystematicStrategi
 C:\Users\lamur\Documents\3aif\Systematic-strategies-with-.NET\SystematicStrategies\bin\x64\Debug\net7.0-windows\SystematicStrategies.dll
 C:\Users\lamur\Documents\3aif\Systematic-strategies-with-.NET\SystematicStrategies\bin\x64\Debug\net7.0-windows\SystematicStrategies.pdb
 C:\Users\lamur\Documents\3aif\Systematic-strategies-with-.NET\SystematicStrategies\bin\x64\Debug\net7.0-windows\CsvHelper.dll
-C:\Users\lamur\Documents\3aif\Systematic-strategies-with-.NET\SystematicStrategies\bin\x64\Debug\net7.0-windows\FluentValidation.dll
 C:\Users\lamur\Documents\3aif\Systematic-strategies-with-.NET\SystematicStrategies\bin\x64\Debug\net7.0-windows\MathNet.Numerics.dll
 C:\Users\lamur\Documents\3aif\Systematic-strategies-with-.NET\SystematicStrategies\bin\x64\Debug\net7.0-windows\PricingLibrary.dll
-C:\Users\lamur\Documents\3aif\Systematic-strategies-with-.NET\SystematicStrategies\bin\x64\Debug\net7.0-windows\runtimes\win10-x64\native\BasicComputations.lib
-C:\Users\lamur\Documents\3aif\Systematic-strategies-with-.NET\SystematicStrategies\bin\x64\Debug\net7.0-windows\runtimes\win10-x64\native\NativeLibrary.lib
-C:\Users\lamur\Documents\3aif\Systematic-strategies-with-.NET\SystematicStrategies\bin\x64\Debug\net7.0-windows\runtimes\win10-x64\native\Wrapper.lib
-C:\Users\lamur\Documents\3aif\Systematic-strategies-with-.NET\SystematicStrategies\bin\x64\Debug\net7.0-windows\runtimes\win10-x64\native\libpnl.lib
 C:\Users\lamur\Documents\3aif\Systematic-strategies-with-.NET\SystematicStrategies\obj\x64\Debug\net7.0-windows\SystematicStrategies.csproj.AssemblyReference.cache
 C:\Users\lamur\Documents\3aif\Systematic-strategies-with-.NET\SystematicStrategies\obj\x64\Debug\net7.0-windows\SystematicStrategies.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\lamur\Documents\3aif\Systematic-strategies-with-.NET\SystematicStrategies\obj\x64\Debug\net7.0-windows\SystematicStrategies.AssemblyInfoInputs.cache
@@ -48,3 +43,9 @@ C:\Users\lamur\Documents\3aif\Systematic-strategies-with-.NET\SystematicStrategi
 C:\Users\lamur\Documents\3aif\Systematic-strategies-with-.NET\SystematicStrategies\obj\x64\Debug\net7.0-windows\SystematicStrategies.pdb
 C:\Users\lamur\Documents\3aif\Systematic-strategies-with-.NET\SystematicStrategies\obj\x64\Debug\net7.0-windows\SystematicStrategies.genruntimeconfig.cache
 C:\Users\lamur\Documents\3aif\Systematic-strategies-with-.NET\SystematicStrategies\obj\x64\Debug\net7.0-windows\ref\SystematicStrategies.dll
+C:\Users\lamur\Documents\3aif\Systematic-strategies-with-.NET\SystematicStrategies\bin\x64\Debug\net7.0-windows\Microsoft.Win32.SystemEvents.dll
+C:\Users\lamur\Documents\3aif\Systematic-strategies-with-.NET\SystematicStrategies\bin\x64\Debug\net7.0-windows\ScottPlot.dll
+C:\Users\lamur\Documents\3aif\Systematic-strategies-with-.NET\SystematicStrategies\bin\x64\Debug\net7.0-windows\System.Drawing.Common.dll
+C:\Users\lamur\Documents\3aif\Systematic-strategies-with-.NET\SystematicStrategies\bin\x64\Debug\net7.0-windows\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\lamur\Documents\3aif\Systematic-strategies-with-.NET\SystematicStrategies\bin\x64\Debug\net7.0-windows\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\lamur\Documents\3aif\Systematic-strategies-with-.NET\SystematicStrategies\bin\x64\Debug\net7.0-windows\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll

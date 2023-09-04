@@ -13,9 +13,9 @@
     <SourceRoot Include="C:\Users\lamur\.nuget\packages\" />
   </ItemGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <None Include="$(NuGetPackageRoot)pricinglibrary\2.0.3.3\contentFiles\any\net7.0-windows7.0\MarketDataFeed\sample_market.csv" Condition="Exists('$(NuGetPackageRoot)pricinglibrary\2.0.3.3\contentFiles\any\net7.0-windows7.0\MarketDataFeed\sample_market.csv')">
+    <None Include="$(NuGetPackageRoot)pricinglibrary\2.0.4.2\contentFiles\any\net6.0\MarketDataFeed\sample_market.csv" Condition="Exists('$(NuGetPackageRoot)pricinglibrary\2.0.4.2\contentFiles\any\net6.0\MarketDataFeed\sample_market.csv')">
       <NuGetPackageId>PricingLibrary</NuGetPackageId>
-      <NuGetPackageVersion>2.0.3.3</NuGetPackageVersion>
+      <NuGetPackageVersion>2.0.4.2</NuGetPackageVersion>
       <NuGetItemType>None</NuGetItemType>
       <Pack>false</Pack>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -9,7 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="PricingLibrary" Version="2.0.3.3" />
+    <PackageReference Include="PricingLibrary" Version="2.0.4.2" />
+    <PackageReference Include="ScottPlot" Version="4.1.67" />
   </ItemGroup>
 
 </Project>
