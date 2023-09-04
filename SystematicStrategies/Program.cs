@@ -32,54 +32,12 @@ namespace SystematicStrategies
         static void Main()
         {
             string csvPath = "C:\\Users\\Erwan Izenic\\OneDrive\\Documents\\COURS_3A\\Systematic-strategies-with-.NET\\SystematicStrategies\\Resources\\TestData\\Test_1_2\\data_1_2.csv";
-            var marketData = new List<ShareValue>();
-            using (var reader = new StreamReader(csvPath))
-            using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)))
-            {
-                var records = csv.GetRecords<ShareValue>();
+            List<ShareValue> marketData = CsvDataReader.GetData(csvPath);
 
-                foreach (var record in records)
-                {
-                    var shareValue = new ShareValue
-                    {
-                        DateOfPrice = record.DateOfPrice,
-                        Id = record.Id,
-                        Value = record.Value
-                    };
-                    marketData.Add(shareValue);
-                }
-            }
             string jsonPath = "C:\\Users\\Erwan Izenic\\OneDrive\\Documents\\COURS_3A\\Systematic-strategies-with-.NET\\SystematicStrategies\\Resources\\TestData\\Test_1_2\\params_1_2.json";
-            BasketTestParameters testParameters = null;
-            using (StreamReader r = new StreamReader(jsonPath))
-            {
-                string json = r.ReadToEnd();
+            BasketTestParameters testParameters = JsonParamsReader.GetParam(jsonPath);
 
-                var model = System.Text.Json.JsonSerializer.Deserialize<BasketTestParametersModel>(json);
-
-                testParameters = new BasketTestParameters
-                {
-                    PricingParams = new BasketPricingParameters
-                    {
-                        Volatilities = model.pricingParams.volatilities,
-                        Correlations = model.pricingParams.correlations
-                    },
-                    BasketOption = new Basket
-                    {
-                        Strike = model.basketOption.strike,
-                        Maturity = model.basketOption.maturity,
-                        UnderlyingShareIds = model.basketOption.underlyingShareIds,
-                        Weights = model.basketOption.weights
-                    },
-                    RebalancingOracleDescription = new PricingLibrary.RebalancingOracleDescriptions.RegularOracleDescription
-                    {
-                        Period = model.rebalancingOracleDescription.period
-                    }
-                };
-            }
-
-
-            //var testParameters = PricingLibrary.Utilities.SampleTestParameters.Sample();
+            
             PricingLibrary.Computations.Pricer pricer = new PricingLibrary.Computations.Pricer(testParameters);
             var p = pricer.Price(PricingLibrary.TimeHandler.MathDateConverter.ConvertToMathDistance(marketData[0].DateOfPrice, marketData.Last().DateOfPrice), new double[]{ marketData[0].Value }).Price;
             List<double> portfolioValues = new List<double>() { p};
