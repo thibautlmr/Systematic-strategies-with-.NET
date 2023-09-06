@@ -12,18 +12,15 @@ namespace BacktestConsole.src
     internal class Portfolio
     {
         public Dictionary<string, double> Composition;
-        public Portfolio(List<PricingLibrary.MarketDataFeed.ShareValue> shares)
+        public double FreeRateQuantity;
+        public double FreeRate;
+        public Portfolio(Dictionary<string, double> composition, double freeRateQuantity, double freeRate)
         {
-            Dictionary<string, double> composition = new Dictionary<string, double>();
-            composition.Add("freeRate", 0);
-            if (shares != null)
-            {
-                foreach (PricingLibrary.MarketDataFeed.ShareValue share in shares)
-                {
-                    if (share != null) { composition.Add(share.Id, 0); }
-                }
-            }
             Composition = composition;
+            FreeRateQuantity = freeRateQuantity;
+            FreeRate = freeRate;
         }
     }
+
+
 }

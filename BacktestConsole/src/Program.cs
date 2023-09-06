@@ -9,11 +9,10 @@ using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-using CsvHelper.Configuration;
-using CsvHelper;
 using MathNet.Numerics.Distributions;
 using ScottPlot;
 using PricingLibrary.MarketDataFeed;
+using PricingLibrary.Computations;
 using Newtonsoft.Json;
 using PricingLibrary.DataClasses;
 using PricingLibrary.RebalancingOracleDescriptions;
@@ -21,44 +20,36 @@ using Newtonsoft.Json.Linq;
 using ScottPlot.Drawing.Colormaps;
 using ScottPlot.Plottable;
 using System.Net;
-using System.Numerics;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 
 
 namespace BacktestConsole.src
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
-        {
-            Input input = new Input(args);
-            DataUtilities dataUtilities = new DataUtilities(input);
-            PricingLibrary.Computations.Pricer pricer = new PricingLibrary.Computations.Pricer(dataUtilities.TestParameters);
-            ComputationUtilities computationUtilities = new ComputationUtilities(pricer, dataUtilities);
-            List<DateTime> dateTimes = dataUtilities.GetDateTimes(dataUtilities.MarketData);
+        private static void Main(string[] args)
+        { 
+            DataUtilities dataUtilities = new(new Input(args));
+            Pricer pricer = new(dataUtilities.TestParameters);
+            ComputationUtilities computationUtilities = new(pricer, dataUtilities);
+            List<DateTime> dateTimes = DataUtilities.GetDateTimes(dataUtilities.MarketData);
+            var marketDataCurrDate = dataUtilities.GetShareValuesForOneDate(dateTimes[0]);
+            Handler handler = new(computationUtilities, marketDataCurrDate);
+            List<OutputData> outputDatas = new();
 
-            List<ShareValue> marketDataCurrDate = dataUtilities.GetShareValuesForOneDate(dateTimes[0]);
-            List<ShareValue> marketDataPrevDate = marketDataCurrDate;
-            Portfolio portfolio = new Portfolio(marketDataCurrDate);
-            PortfolioUtilities portfolioUtilities = new PortfolioUtilities(portfolio, computationUtilities);
-            List<OutputData> outputDatas = new List<OutputData>();
-
-            portfolioUtilities.UpdateCompo(marketDataPrevDate, marketDataCurrDate);
-            portfolioUtilities.AddOutputData(outputDatas, marketDataPrevDate, marketDataCurrDate);
+            handler.AddOutputData(outputDatas);
 
             for (int t = 1; t < dateTimes.Count; t++)
             {
-                marketDataCurrDate = dataUtilities.GetShareValuesForOneDate(dateTimes[t]);
-                if (dataUtilities.RebalancingTime(t, computationUtilities, marketDataCurrDate))
+                handler.MarketDataCurrDate = dataUtilities.GetShareValuesForOneDate(dateTimes[t]);
+                if (DataUtilities.RebalancingTime(t, computationUtilities, handler.MarketDataCurrDate))
                 {
-                    portfolioUtilities.GetPortfolioValue(marketDataPrevDate, marketDataCurrDate);
-                    portfolioUtilities.UpdateCompo(marketDataPrevDate, marketDataCurrDate);
-                    portfolioUtilities.AddOutputData(outputDatas, marketDataPrevDate, marketDataCurrDate);
-                    marketDataPrevDate = dataUtilities.GetShareValuesForOneDate(dateTimes[t]);
+                    handler.GetPortfolioValue();
+                    handler.UpdateCompo();
+                    handler.AddOutputData(outputDatas);
+                    handler.MarketDataPrevDate = dataUtilities.GetShareValuesForOneDate(dateTimes[t]);
                 }
             }
-            File.WriteAllText(input.OutputFilePath, dataUtilities.GetJsonFromObject(outputDatas));
+            File.WriteAllText(dataUtilities.Input.OutputFilePath, dataUtilities.GetJsonFromObject(outputDatas));
         }
     }
 }

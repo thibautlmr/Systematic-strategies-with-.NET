@@ -139,16 +139,12 @@ def run_single_grpc_test(test_folder, out_folder, client_path):
 def create_grpc_client_path(grpc_folder_path):
     '''
     Helper method for building the grpc and accessing the executable path.
-    '''
-    client_source_path = Path.cwd().joinpath('GrpcEvaluation')
-    if  Path(grpc_folder_path).exists():
-        shutil.rmtree(grpc_folder_path)
-    shutil.copytree(client_source_path, grpc_folder_path)
+    '''    
     os.chdir(grpc_folder_path)
     print(f'Building client in folder {grpc_folder_path} (platform x64)')
     subprocess.run("dotnet build /nowarn:msb3246,msb3270 /p:Platform=x64 -v q", check=True)
     print(f"Done building client in folder {grpc_folder_path}")
-    grpc_client_path=grpc_folder_path.joinpath('GrpcEvaluation/bin/x64/Debug/net6.0')
+    grpc_client_path=grpc_folder_path.joinpath('GrpcEvaluation/bin/x64/Debug/net7.0')
     return grpc_client_path  
 
 def check_output_structure(output_folder):
@@ -248,3 +244,4 @@ def run_tests():
 
 if __name__ == "__main__":
     run_tests()
+

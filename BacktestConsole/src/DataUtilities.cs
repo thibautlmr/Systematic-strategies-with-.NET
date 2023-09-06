@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using PricingLibrary.RebalancingOracleDescriptions;
 using System.Text.Json.Serialization;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace BacktestConsole.src
 {
@@ -19,14 +20,16 @@ namespace BacktestConsole.src
         public List<ShareValue> MarketData;
         public BasketTestParameters TestParameters;
         public DateTime Maturity;
+        public Input Input;
         public DataUtilities(Input input)
         {
+            Input = input;
             MarketData = GetMarketDataFromCsv(input);
             TestParameters = GetBasketTestParametersFromCsv(input);
             Maturity = TestParameters.BasketOption.Maturity;
         }
 
-        private JsonSerializerOptions GetJsonOptions()
+        private static JsonSerializerOptions GetJsonOptions()
         {
             var options = new JsonSerializerOptions()
             {
@@ -36,7 +39,7 @@ namespace BacktestConsole.src
             return options;
         }
 
-        private List<ShareValue> GetMarketDataFromCsv(Input input)
+        private static List<ShareValue> GetMarketDataFromCsv(Input input)
         {
             string csvPath = input.MarketDataPath;
             var marketData = new List<ShareValue>();
@@ -60,15 +63,20 @@ namespace BacktestConsole.src
 
         private BasketTestParameters GetBasketTestParametersFromCsv(Input input)
         {
-            BasketTestParameters testParameters;
             string jsonPath = input.TestParamsPath;
-            using (StreamReader r = new StreamReader(jsonPath))
-            {
+            using (StreamReader r = new(jsonPath))
+            { 
                 string json = r.ReadToEnd();
                 var options = GetJsonOptions();
-                testParameters = JsonSerializer.Deserialize<BasketTestParameters>(json, options);
+                BasketTestParameters? testParameters = JsonSerializer.Deserialize<BasketTestParameters>(json, options);
+                if (testParameters != null) 
+                { 
+                    return testParameters;
+                } else
+                {
+                    return new BasketTestParameters();
+                }
             }
-            return testParameters;
         }
 
         public string GetJsonFromObject(object obj)
@@ -77,7 +85,7 @@ namespace BacktestConsole.src
             return JsonSerializer.Serialize(obj, options);
         }
 
-        public bool RebalancingTime(int t, ComputationUtilities computationUtilities, List<ShareValue> marketDataCurrDate)
+        public static bool RebalancingTime(int t, ComputationUtilities computationUtilities, List<ShareValue> marketDataCurrDate)
         {
             IRebalancingOracleDescription rebalancingOracleType = computationUtilities.DataUtilities.TestParameters.RebalancingOracleDescription;
             if (rebalancingOracleType.Type == RebalancingOracleType.Regular)
@@ -99,30 +107,19 @@ namespace BacktestConsole.src
             return false;
         }
 
-        public List<DateTime> GetDateTimes(List<ShareValue> shares)
+        public static List<DateTime> GetDateTimes(List<ShareValue> shares)
         {
-            List<DateTime> dateTimes = new List<DateTime>();
-            for (int i = 0; i < shares.Count; i++)
+            List<DateTime> dateTimes = new();
+            foreach (DateTime date in shares.Select(share => share.DateOfPrice).Where(date => !dateTimes.Contains(date)))
             {
-                if (!dateTimes.Contains(shares[i].DateOfPrice))
-                {
-                    dateTimes.Add(shares[i].DateOfPrice);
-                }
-            }
-            foreach (ShareValue share in shares)
-            {
-                if (!dateTimes.Contains(share.DateOfPrice))
-                {
-                    dateTimes.Add(share.DateOfPrice);
-                }
+                dateTimes.Add(date);
             }
             return dateTimes;
         }
 
         public List<ShareValue> GetShareValuesForOneDate(DateTime dateTime)
         {
-            List<DateTime> dateTimes = GetDateTimes(MarketData);
-            List<ShareValue> sharesOneDate = new List<ShareValue>();
+            List<ShareValue> sharesOneDate = new();
             foreach (ShareValue share in MarketData)
             {
                 if (share.DateOfPrice == dateTime)
@@ -131,6 +128,17 @@ namespace BacktestConsole.src
                 }
             }
             return sharesOneDate;
+        }
+
+        public List<string> GetIds()
+        {
+            var shareIds = TestParameters.BasketOption.UnderlyingShareIds;
+            List<string> ids = new();
+            foreach (string id in shareIds) 
+            {
+                ids.Add(id);
+            }
+            return ids;
         }
     }
 }

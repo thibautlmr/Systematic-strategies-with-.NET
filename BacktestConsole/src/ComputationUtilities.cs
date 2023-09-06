@@ -42,32 +42,36 @@ namespace BacktestConsole.src
             return false;
         }
 
-        public double GetFreeRate(DateTime date1, DateTime date2)
+        public static double GetFreeRate(DateTime date1, DateTime date2)
         {
             return RiskFreeRateProvider.GetRiskFreeRateAccruedValue(date1, date2);
         }
 
         public double[] GetSpots(DateTime date)
         {
+            string[] underlyingShareIds = DataUtilities.TestParameters.BasketOption.UnderlyingShareIds;
             List<ShareValue> marketDataCurrDate = DataUtilities.GetShareValuesForOneDate(date);
             double[] spots = new double[marketDataCurrDate.Count];
-            for (int i = 0; i < marketDataCurrDate.Count; i++)
+            for (int i = 0; i < underlyingShareIds.Length; i++)
             {
-                spots[i] = marketDataCurrDate[i].Value;
+                int j = 0;
+                while (underlyingShareIds[i] != marketDataCurrDate[j].Id)
+                {
+                    j++;
+                }
+                spots[i] = marketDataCurrDate[j].Value;
             }
             return spots;
         }
 
         public double[] GetDeltas(DateTime date, DateTime maturity)
         {
-            List<ShareValue> marketDataCurrDate = DataUtilities.GetShareValuesForOneDate(date);
             double[] spots = GetSpots(date);
             return Pricer.Price(PricingLibrary.TimeHandler.MathDateConverter.ConvertToMathDistance(date, maturity), spots).Deltas;
         }
 
         public double[] GetDeltaStdDev(DateTime date, DateTime maturity)
         {
-            List<ShareValue> marketDataCurrDate = DataUtilities.GetShareValuesForOneDate(date);
             double[] spots = GetSpots(date);
             return Pricer.Price(PricingLibrary.TimeHandler.MathDateConverter.ConvertToMathDistance(date, maturity), spots).DeltaStdDev;
         }
@@ -80,11 +84,8 @@ namespace BacktestConsole.src
 
         public double GetPriceStdDev(DateTime date, DateTime maturity)
         {
-            List<ShareValue> marketDataCurrDate = DataUtilities.GetShareValuesForOneDate(date);
             double[] spots = GetSpots(date);
             return Pricer.Price(PricingLibrary.TimeHandler.MathDateConverter.ConvertToMathDistance(date, maturity), spots).PriceStdDev;
         }
     }
-
-
 }
