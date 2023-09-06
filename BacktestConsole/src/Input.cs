@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SystematicStrategies
+namespace BacktestConsole.src
 {
     internal class Input
     {
-        public String TestParamsPath;
-        public String MarketDataPath;
-        public String OutputFilePath;
-        public Input(String[] args)
+        public string TestParamsPath;
+        public string MarketDataPath;
+        public string OutputFilePath;
+        public Input(string[] args)
         {
             if (args.Length != 3)
             {
@@ -25,7 +25,7 @@ namespace SystematicStrategies
             {
                 if (args[0].EndsWith(".json"))
                 {
-                    this.TestParamsPath = args[0];
+                    TestParamsPath = args[0];
                 }
                 else
                 {
@@ -36,7 +36,7 @@ namespace SystematicStrategies
                 }
                 if (args[1].EndsWith(".csv"))
                 {
-                    this.MarketDataPath = args[1];
+                    MarketDataPath = args[1];
                 }
                 else
                 {
@@ -47,7 +47,7 @@ namespace SystematicStrategies
                 }
                 if (args[2].EndsWith(".json"))
                 {
-                    this.OutputFilePath = args[2];
+                    OutputFilePath = args[2];
                 }
                 else
                 {

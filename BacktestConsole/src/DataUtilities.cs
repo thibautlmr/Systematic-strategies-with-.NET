@@ -12,18 +12,18 @@ using System.Text.Json;
 using PricingLibrary.RebalancingOracleDescriptions;
 using System.Text.Json.Serialization;
 
-namespace SystematicStrategies
+namespace BacktestConsole.src
 {
     internal class DataUtilities
     {
-        public List<PricingLibrary.MarketDataFeed.ShareValue> MarketData;
-        public PricingLibrary.DataClasses.BasketTestParameters TestParameters;
+        public List<ShareValue> MarketData;
+        public BasketTestParameters TestParameters;
         public DateTime Maturity;
         public DataUtilities(Input input)
-        { 
-            this.MarketData = GetMarketDataFromCsv(input);
-            this.TestParameters = GetBasketTestParametersFromCsv(input);
-            this.Maturity = TestParameters.BasketOption.Maturity;
+        {
+            MarketData = GetMarketDataFromCsv(input);
+            TestParameters = GetBasketTestParametersFromCsv(input);
+            Maturity = TestParameters.BasketOption.Maturity;
         }
 
         private JsonSerializerOptions GetJsonOptions()
@@ -58,7 +58,7 @@ namespace SystematicStrategies
             return marketData;
         }
 
-        private PricingLibrary.DataClasses.BasketTestParameters GetBasketTestParametersFromCsv(Input input)
+        private BasketTestParameters GetBasketTestParametersFromCsv(Input input)
         {
             BasketTestParameters testParameters;
             string jsonPath = input.TestParamsPath;
@@ -71,16 +71,45 @@ namespace SystematicStrategies
             return testParameters;
         }
 
-        public String GetJsonFromObject(Object obj)
+        public string GetJsonFromObject(object obj)
         {
             var options = GetJsonOptions();
-            return System.Text.Json.JsonSerializer.Serialize(obj, options);
+            return JsonSerializer.Serialize(obj, options);
         }
 
-        public List<DateTime> GetDateTimes(List<PricingLibrary.MarketDataFeed.ShareValue> shares)
+        public bool RebalancingTime(int t, ComputationUtilities computationUtilities, List<ShareValue> marketDataCurrDate)
+        {
+            IRebalancingOracleDescription rebalancingOracleType = computationUtilities.DataUtilities.TestParameters.RebalancingOracleDescription;
+            if (rebalancingOracleType.Type == RebalancingOracleType.Regular)
+            {
+                int period = ((RegularOracleDescription)rebalancingOracleType).Period;
+                if (t % period == 0)
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                DayOfWeek day = ((WeeklyOracleDescription)rebalancingOracleType).RebalancingDay;
+                if (marketDataCurrDate[t].DateOfPrice.DayOfWeek == day)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public List<DateTime> GetDateTimes(List<ShareValue> shares)
         {
             List<DateTime> dateTimes = new List<DateTime>();
-            foreach(ShareValue share in shares)
+            for (int i = 0; i < shares.Count; i++)
+            {
+                if (!dateTimes.Contains(shares[i].DateOfPrice))
+                {
+                    dateTimes.Add(shares[i].DateOfPrice);
+                }
+            }
+            foreach (ShareValue share in shares)
             {
                 if (!dateTimes.Contains(share.DateOfPrice))
                 {
@@ -90,10 +119,10 @@ namespace SystematicStrategies
             return dateTimes;
         }
 
-        public List<PricingLibrary.MarketDataFeed.ShareValue> GetShareValuesForOneDate(DateTime dateTime) 
+        public List<ShareValue> GetShareValuesForOneDate(DateTime dateTime)
         {
             List<DateTime> dateTimes = GetDateTimes(MarketData);
-            List<ShareValue> sharesOneDate = new List<PricingLibrary.MarketDataFeed.ShareValue>();
+            List<ShareValue> sharesOneDate = new List<ShareValue>();
             foreach (ShareValue share in MarketData)
             {
                 if (share.DateOfPrice == dateTime)
