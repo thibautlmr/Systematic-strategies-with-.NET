@@ -49,10 +49,10 @@ namespace BacktestConsole.src
 
         public double[] GetSpots(DateTime date)
         {
-            string[] underlyingShareIds = DataUtilities.TestParameters.BasketOption.UnderlyingShareIds;
+            List<string> underlyingShareIds = DataUtilities.GetIds();
             List<ShareValue> marketDataCurrDate = DataUtilities.GetShareValuesForOneDate(date);
             double[] spots = new double[marketDataCurrDate.Count];
-            for (int i = 0; i < underlyingShareIds.Length; i++)
+            for (int i = 0; i < underlyingShareIds.Count; i++)
             {
                 int j = 0;
                 while (underlyingShareIds[i] != marketDataCurrDate[j].Id)

@@ -49,7 +49,7 @@ namespace BacktestConsole.src
                     handler.MarketDataPrevDate = dataUtilities.GetShareValuesForOneDate(dateTimes[t]);
                 }
             }
-            File.WriteAllText(dataUtilities.Input.OutputFilePath, dataUtilities.GetJsonFromObject(outputDatas));
+            File.WriteAllText(dataUtilities.Input.OutputFilePath, DataUtilities.GetJsonFromObject(outputDatas));
         }
     }
 }

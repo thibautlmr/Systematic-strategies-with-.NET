@@ -61,25 +61,23 @@ namespace BacktestConsole.src
             return marketData;
         }
 
-        private BasketTestParameters GetBasketTestParametersFromCsv(Input input)
+        private static BasketTestParameters GetBasketTestParametersFromCsv(Input input)
         {
             string jsonPath = input.TestParamsPath;
-            using (StreamReader r = new(jsonPath))
-            { 
-                string json = r.ReadToEnd();
-                var options = GetJsonOptions();
-                BasketTestParameters? testParameters = JsonSerializer.Deserialize<BasketTestParameters>(json, options);
-                if (testParameters != null) 
-                { 
-                    return testParameters;
-                } else
-                {
-                    return new BasketTestParameters();
-                }
+            using StreamReader r = new(jsonPath);
+            string json = r.ReadToEnd();
+            var options = GetJsonOptions();
+            BasketTestParameters? testParameters = JsonSerializer.Deserialize<BasketTestParameters>(json, options);
+            if (testParameters != null)
+            {
+                return testParameters;
+            } else
+            {
+                return new BasketTestParameters();
             }
         }
 
-        public string GetJsonFromObject(object obj)
+        public static string GetJsonFromObject(object obj)
         {
             var options = GetJsonOptions();
             return JsonSerializer.Serialize(obj, options);
@@ -132,7 +130,7 @@ namespace BacktestConsole.src
 
         public List<string> GetIds()
         {
-            var shareIds = TestParameters.BasketOption.UnderlyingShareIds;
+            string[] shareIds = TestParameters.BasketOption.UnderlyingShareIds;
             List<string> ids = new();
             foreach (string id in shareIds) 
             {
