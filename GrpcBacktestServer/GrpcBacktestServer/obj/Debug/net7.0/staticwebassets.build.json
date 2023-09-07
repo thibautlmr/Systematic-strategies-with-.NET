@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "icCzML09Pgs141BLL0uydqDNCSGzArCaPzYiP6/vdxE=",
+  "Source": "GrpcBacktestServer",
+  "BasePath": "_content/GrpcBacktestServer",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

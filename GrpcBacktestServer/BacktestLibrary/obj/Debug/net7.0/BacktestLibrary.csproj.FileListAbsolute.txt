@@ -1,0 +1,13 @@
+C:\Users\Erwan Izenic\OneDrive\Documents\COURS_3A\GrpcBacktestServer\BacktestLibrary\bin\Debug\net7.0\BacktestLibrary.deps.json
+C:\Users\Erwan Izenic\OneDrive\Documents\COURS_3A\GrpcBacktestServer\BacktestLibrary\bin\Debug\net7.0\BacktestLibrary.dll
+C:\Users\Erwan Izenic\OneDrive\Documents\COURS_3A\GrpcBacktestServer\BacktestLibrary\bin\Debug\net7.0\BacktestLibrary.pdb
+C:\Users\Erwan Izenic\OneDrive\Documents\COURS_3A\GrpcBacktestServer\BacktestLibrary\obj\Debug\net7.0\BacktestLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Erwan Izenic\OneDrive\Documents\COURS_3A\GrpcBacktestServer\BacktestLibrary\obj\Debug\net7.0\BacktestLibrary.AssemblyInfoInputs.cache
+C:\Users\Erwan Izenic\OneDrive\Documents\COURS_3A\GrpcBacktestServer\BacktestLibrary\obj\Debug\net7.0\BacktestLibrary.AssemblyInfo.cs
+C:\Users\Erwan Izenic\OneDrive\Documents\COURS_3A\GrpcBacktestServer\BacktestLibrary\obj\Debug\net7.0\BacktestLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Erwan Izenic\OneDrive\Documents\COURS_3A\GrpcBacktestServer\BacktestLibrary\obj\Debug\net7.0\BacktestLibrary.dll
+C:\Users\Erwan Izenic\OneDrive\Documents\COURS_3A\GrpcBacktestServer\BacktestLibrary\obj\Debug\net7.0\refint\BacktestLibrary.dll
+C:\Users\Erwan Izenic\OneDrive\Documents\COURS_3A\GrpcBacktestServer\BacktestLibrary\obj\Debug\net7.0\BacktestLibrary.pdb
+C:\Users\Erwan Izenic\OneDrive\Documents\COURS_3A\GrpcBacktestServer\BacktestLibrary\obj\Debug\net7.0\ref\BacktestLibrary.dll
+C:\Users\Erwan Izenic\OneDrive\Documents\COURS_3A\GrpcBacktestServer\BacktestLibrary\bin\Debug\net7.0\MarketDataFeed\sample_market.csv
+C:\Users\Erwan Izenic\OneDrive\Documents\COURS_3A\GrpcBacktestServer\BacktestLibrary\obj\Debug\net7.0\BacktestLibrary.csproj.AssemblyReference.cache

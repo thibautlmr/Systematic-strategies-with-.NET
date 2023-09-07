@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "7K7fQPFhCR5u9/9qjSrC3qHROxQSq0Km+Fptkwh+fH/dRcDWzqUn6MXByQnryE7svxybbnY8X39cCQ1aE7JDVA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Erwan Izenic\\OneDrive\\Documents\\COURS_3A\\GrpcBacktestServer\\BacktestLibrary\\BacktestLibrary.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Erwan Izenic\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512",
+    "C:\\Users\\Erwan Izenic\\.nuget\\packages\\mathnet.numerics\\5.0.0\\mathnet.numerics.5.0.0.nupkg.sha512",
+    "C:\\Users\\Erwan Izenic\\.nuget\\packages\\pricinglibrary\\2.0.4.2\\pricinglibrary.2.0.4.2.nupkg.sha512"
+  ],
+  "logs": []
+}
