@@ -32,20 +32,20 @@ namespace SystematicStrategies
         static void Main(string[] args)
         {
 
-            if (args.Length != 3)
+            /*if (args.Length != 3)
             {
                 Console.WriteLine("Utilisation : BacktestConsole.exe <test-params> <mkt-data> <output-file>");
                 return;
-            }
+            }*/
 
-            string jsonPath = args[0];
-            string csvPath = args[1];
-            string outputJsonPath = args[2];
+            //string jsonPath = args[0];
+            //string csvPath = args[1];
+            //string outputJsonPath = args[2];
 
-            //string csvPath = "C:\\Users\\Erwan Izenic\\OneDrive\\Documents\\COURS_3A\\Systematic-strategies-with-.NET\\SystematicStrategies\\Resources\\TestData\\Test_1_2\\data_1_2.csv";
+            string csvPath = "C:\\Users\\Erwan Izenic\\OneDrive\\Documents\\COURS_3A\\Systematic-strategies-with-.NET\\SystematicStrategies\\Resources\\TestData\\Test_1_2\\data_1_2.csv";
             List<ShareValue> marketData = CsvDataReader.GetData(csvPath);
 
-            //string jsonPath = "C:\\Users\\Erwan Izenic\\OneDrive\\Documents\\COURS_3A\\Systematic-strategies-with-.NET\\SystematicStrategies\\Resources\\TestData\\Test_1_2\\params_1_2.json";
+            string jsonPath = "C:\\Users\\Erwan Izenic\\OneDrive\\Documents\\COURS_3A\\Systematic-strategies-with-.NET\\SystematicStrategies\\Resources\\TestData\\Test_1_2\\params_1_2.json";
             BasketTestParameters testParameters = JsonParamsReader.GetParam(jsonPath);
 
             

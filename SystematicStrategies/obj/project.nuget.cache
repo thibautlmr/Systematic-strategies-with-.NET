@@ -1,10 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "zvJw60WyUz6114FLwotxg66tPRLZx7p7oXcfVPEGuUmY0jJMY5xRhz4ecUDtRVc2+URYmQldyIlRvmhaZTqSGw==",
+  "dgSpecHash": "rEmwJx9s7//+vwXd+DA34CZw9/HiVLf2natSzVZJd9i+ddBgHfFikD20rnZJlrzLeQKtUT52+7ziVpe4joVP4g==",
   "success": true,
   "projectFilePath": "C:\\Users\\Erwan Izenic\\OneDrive\\Documents\\COURS_3A\\Systematic-strategies-with-.NET\\SystematicStrategies\\SystematicStrategies.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Erwan Izenic\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512",
+    "C:\\Users\\Erwan Izenic\\.nuget\\packages\\grpc\\2.46.6\\grpc.2.46.6.nupkg.sha512",
+    "C:\\Users\\Erwan Izenic\\.nuget\\packages\\grpc.core\\2.46.6\\grpc.core.2.46.6.nupkg.sha512",
+    "C:\\Users\\Erwan Izenic\\.nuget\\packages\\grpc.core.api\\2.46.6\\grpc.core.api.2.46.6.nupkg.sha512",
+    "C:\\Users\\Erwan Izenic\\.nuget\\packages\\grpc.tools\\2.58.0-pre1\\grpc.tools.2.58.0-pre1.nupkg.sha512",
     "C:\\Users\\Erwan Izenic\\.nuget\\packages\\mathnet.numerics\\5.0.0\\mathnet.numerics.5.0.0.nupkg.sha512",
     "C:\\Users\\Erwan Izenic\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.4\\microsoft.netcore.platforms.3.1.4.nupkg.sha512",
     "C:\\Users\\Erwan Izenic\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
@@ -12,6 +16,7 @@
     "C:\\Users\\Erwan Izenic\\.nuget\\packages\\pricinglibrary\\2.0.4.2\\pricinglibrary.2.0.4.2.nupkg.sha512",
     "C:\\Users\\Erwan Izenic\\.nuget\\packages\\scottplot\\4.1.67\\scottplot.4.1.67.nupkg.sha512",
     "C:\\Users\\Erwan Izenic\\.nuget\\packages\\system.drawing.common\\4.7.2\\system.drawing.common.4.7.2.nupkg.sha512",
+    "C:\\Users\\Erwan Izenic\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
     "C:\\Users\\Erwan Izenic\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
   ],
   "logs": []
