@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lamur\\Documents\\3aif\\Systematic-strategies-with-.NET\\BacktestConsole\\BacktestConsole.csproj": {}
+    "C:\\Users\\Erwan Izenic\\OneDrive\\Documents\\COURS_3A\\Systematic-strategies-with-.NET\\BacktestConsole\\BacktestConsole.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lamur\\Documents\\3aif\\Systematic-strategies-with-.NET\\BacktestConsole\\BacktestConsole.csproj": {
+    "C:\\Users\\Erwan Izenic\\OneDrive\\Documents\\COURS_3A\\Systematic-strategies-with-.NET\\BacktestConsole\\BacktestConsole.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lamur\\Documents\\3aif\\Systematic-strategies-with-.NET\\BacktestConsole\\BacktestConsole.csproj",
+        "projectUniqueName": "C:\\Users\\Erwan Izenic\\OneDrive\\Documents\\COURS_3A\\Systematic-strategies-with-.NET\\BacktestConsole\\BacktestConsole.csproj",
         "projectName": "BacktestConsole",
-        "projectPath": "C:\\Users\\lamur\\Documents\\3aif\\Systematic-strategies-with-.NET\\BacktestConsole\\BacktestConsole.csproj",
-        "packagesPath": "C:\\Users\\lamur\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lamur\\Documents\\3aif\\Systematic-strategies-with-.NET\\BacktestConsole\\obj\\",
+        "projectPath": "C:\\Users\\Erwan Izenic\\OneDrive\\Documents\\COURS_3A\\Systematic-strategies-with-.NET\\BacktestConsole\\BacktestConsole.csproj",
+        "packagesPath": "C:\\Users\\Erwan Izenic\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Erwan Izenic\\OneDrive\\Documents\\COURS_3A\\Systematic-strategies-with-.NET\\BacktestConsole\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\lamur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Erwan Izenic\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,8 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Users\\lamur\\Documents\\3aif": {},
-          "C:\\Users\\lamur\\Downloads": {},
+          "C:\\Users\\Erwan Izenic\\Downloads": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -45,6 +44,16 @@
             "CsvHelper": {
               "target": "Package",
               "version": "[30.0.1, )"
+            },
+            "Grpc": {
+              "target": "Package",
+              "version": "[2.46.6, )"
+            },
+            "Grpc.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.58.0-pre1, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",

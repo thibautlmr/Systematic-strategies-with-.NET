@@ -5,12 +5,12 @@
     <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
     <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
-    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\lamur\.nuget\packages\</NuGetPackageFolders>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\Erwan Izenic\.nuget\packages\</NuGetPackageFolders>
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
     <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.7.0</NuGetToolVersion>
   </PropertyGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <SourceRoot Include="C:\Users\lamur\.nuget\packages\" />
+    <SourceRoot Include="C:\Users\Erwan Izenic\.nuget\packages\" />
   </ItemGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <None Include="$(NuGetPackageRoot)pricinglibrary\2.0.4.2\contentFiles\any\net6.0\MarketDataFeed\sample_market.csv" Condition="Exists('$(NuGetPackageRoot)pricinglibrary\2.0.4.2\contentFiles\any\net6.0\MarketDataFeed\sample_market.csv')">
@@ -25,4 +25,10 @@
       <Link>MarketDataFeed\sample_market.csv</Link>
     </None>
   </ItemGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)grpc.tools\2.58.0-pre1\build\Grpc.Tools.props" Condition="Exists('$(NuGetPackageRoot)grpc.tools\2.58.0-pre1\build\Grpc.Tools.props')" />
+  </ImportGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgGrpc_Tools Condition=" '$(PkgGrpc_Tools)' == '' ">C:\Users\Erwan Izenic\.nuget\packages\grpc.tools\2.58.0-pre1</PkgGrpc_Tools>
+  </PropertyGroup>
 </Project>
